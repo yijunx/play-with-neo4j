@@ -1,0 +1,25 @@
+{
+	"name": "workflow-management",  // change the name here
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/opt/motiong/code",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				},
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+			]
+		}
+	},
+	"postCreateCommand": "poetry install --with dev",
+	"remoteUser": "motiong"
+}
+
