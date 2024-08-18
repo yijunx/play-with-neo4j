@@ -1,4 +1,4 @@
-from app.repositories.graph import BaseFriendRepo
+from app.repositories.base_graph import BaseFriendRepo
 
 
 class FriendService:

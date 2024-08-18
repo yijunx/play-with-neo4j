@@ -1,18 +1,5 @@
 from neo4j import GraphDatabase, RoutingControl, Driver
-from abc import ABC, abstractmethod
-
-from typing import TypeVar
-
-DBDriver = TypeVar(name="DBDriver")
-
-
-class BaseFriendRepo(ABC):
-    @abstractmethod
-    def add_friend(self, driver: DBDriver, name: str, friend_name: str): ...
-    @abstractmethod
-    def print_friends(self, driver: DBDriver, name: str): ...
-    @abstractmethod
-    def get_driver(self) -> DBDriver: ...
+from app.repositories.base_graph import BaseFriendRepo
 
 
 class Neo4jFriendRepo(BaseFriendRepo):
