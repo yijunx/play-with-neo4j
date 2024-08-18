@@ -1,11 +1,11 @@
-from neo4j import GraphDatabase, RoutingControl
+from neo4j import GraphDatabase, RoutingControl, Driver
 
 
 URI = "neo4j://neo4j:7687"
 AUTH = ("neo4j", "very-cool-password")
 
 
-def add_friend(driver, name, friend_name):
+def add_friend(driver: Driver, name: str, friend_name: str):
     driver.execute_query(
         "MERGE (a:Person {name: $name}) "
         "MERGE (friend:Person {name: $friend_name}) "
@@ -14,7 +14,7 @@ def add_friend(driver, name, friend_name):
     )
 
 
-def print_friends(driver, name):
+def print_friends(driver: Driver, name: str):
     records, _, _ = driver.execute_query(
         "MATCH (a:Person)-[:KNOWS]->(friend) WHERE a.name = $name "
         "RETURN friend.name ORDER BY friend.name",
