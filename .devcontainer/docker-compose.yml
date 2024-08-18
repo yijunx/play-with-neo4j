@@ -21,6 +21,7 @@ services:
 
     # Passes the following environment variables to the container
     environment:
+      # community edition, username must be neo4j..
       - NEO4J_AUTH=neo4j/very-cool-password
 
     # Simple check testing whether the port 7474 is opened.

@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 neo4j = "^5.23.1"
+pydantic-settings = "^2.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
