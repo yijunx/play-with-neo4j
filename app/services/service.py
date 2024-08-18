@@ -10,9 +10,7 @@ class FriendService:
 
         # start to talking to graph db only when required!!!
         with self.friend_repo.get_driver() as driver:
-            self.friend_repo.add_friend(
-                driver=driver, name="tom", friend_name="emily"
-            )
+            self.friend_repo.add_friend(driver=driver, name="tom", friend_name="emily")
 
     def something_needs_print_friends(self):
         # some other business logic
@@ -20,6 +18,3 @@ class FriendService:
         # start to talking to graph db only when required!!!
         with self.friend_repo.get_driver() as driver:
             self.friend_repo.print_friends(driver=driver, name="tom")
-
-
-    

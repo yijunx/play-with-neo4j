@@ -5,6 +5,7 @@ from typing import TypeVar
 
 DBDriver = TypeVar(name="DBDriver")
 
+
 class BaseFriendRepo(ABC):
     @abstractmethod
     def add_friend(self, driver: DBDriver, name: str, friend_name: str): ...
@@ -33,7 +34,6 @@ class Neo4jFriendRepo(BaseFriendRepo):
             friend_name=friend_name,
             database_=self.db_name,
         )
-
 
     def print_friends(self, driver: Driver, name: str):
         records, _, _ = driver.execute_query(
