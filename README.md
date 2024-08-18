@@ -12,5 +12,8 @@
 ### What does the app provide
 
 * a structure where I provide an abstraction layer on neo4j driver, which means we can use other gragh db
+* why the with block is at the service layer
+    * for each db operation, there is no need to recreate drivers, we save connection!
+    * but for each service layer function, each time we use one connection and close, so the app should use less (ideally one) service function each time a request comes.
 
 ### Notes on enterprise edittion
