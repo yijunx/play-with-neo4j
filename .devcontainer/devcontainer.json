@@ -1,15 +1,15 @@
 {
-	"name": "workflow-management",  // change the name here
+	"name": "play-with-neo4j",  // change the name here
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/opt/motiong/code",
+	"workspaceFolder": "/opt/meesa/code",
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.defaultProfile.linux": "zsh",
 				"terminal.integrated.profiles.linux": {
-					"bash": {
-						"path": "/bin/bash"
+					"zsh": {
+						"path": "/bin/zsh"
 					}
 				},
 			},
@@ -20,6 +20,6 @@
 		}
 	},
 	"postCreateCommand": "poetry install --with dev",
-	"remoteUser": "motiong"
+	"remoteUser": "meesa"
 }
 

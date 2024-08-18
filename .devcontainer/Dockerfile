@@ -4,11 +4,14 @@ FROM python:3.12
 # then arm machines will have issues
 ENV PYTHONUNBUFFERED 1
 # to prevent run as root
-ARG DOCKER_HOME="/opt/motiong"
-ARG DOCKER_CODE="/opt/motiong/code"
-ARG DOCKER_GROUP="motiong"
-ARG DOCKER_USER="motiong"
+ARG DOCKER_HOME="/opt/meesa"
+ARG DOCKER_CODE="/opt/meesa/code"
+ARG DOCKER_GROUP="meesa"
+ARG DOCKER_USER="meesa"
 ARG DOCKER_UID=5000
+
+ENV ZSH="/opt/meesa/.oh-my-zsh"
+
 WORKDIR ${DOCKER_CODE}
 
 RUN groupadd -g ${DOCKER_UID} ${DOCKER_GROUP} \
@@ -23,13 +26,17 @@ RUN apt-get update && \
     pip install poetry==1.8.3 && \
     poetry config virtualenvs.create false
 
+# Install zsh, omz, plugins
+RUN apt-get install -y zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
 # will add examples to install our own python modules
 # maybe not via git+ssh, well we will decide later if we have any
 RUN mkdir ${DOCKER_HOME}/.ssh && \
     chown -R ${DOCKER_USER} ${DOCKER_HOME}/.ssh && \
     ssh-keyscan github.com >> ${DOCKER_HOME}/.ssh/known_hosts
 
-ENV PATH "$PATH:/opt/motiong/.local/bin"
+ENV PATH "$PATH:/opt/meesa/.local/bin"
 ENV PYTHONPATH=.
 
 USER ${DOCKER_USER}
